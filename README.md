@@ -33,7 +33,7 @@ https://openapi.programming-hero.com/api/categories
 
 3. Get 🌴plants by categories <br/>
 ```bash
-https://openapi.programming-hero.com/api/category/${id}
+ht4tps://openapi.programming-hero.com/api/category/${id}
 ```
 
 ```bash

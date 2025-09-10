@@ -35,7 +35,7 @@
     </style>
 </head>
 
-<body class="bg-[#F0FDF4]">
+<body class="bg-[#F0FDF4] h-[3000px]">
     <nav class="bg-[#15803D] h-14 flex justify-between items-center mx-auto md:h-20 px-2 md:px-25">
         <h3 class="font-medium text-md md:text-2xl text-white">Green Earth</h3>
         <div class="flex gap-1 md:gap-8 ">
@@ -70,36 +70,60 @@
     </section>
 
 
-    <section class="px-20">
+    <section class="md:px-17 px-4">
 
-        <h1 class="inter-intero font-semibold text-3xl pt-20 text-center">Choose Your Trees</h1>
-        <section class="flex justify-around gap-8 pt-6 ">
-            <section >
-                <div class="border md:w-full">
-                    <h3 class="font-semibold pb-2"> Categories</h3>
-                    <section>
-                        <button onclick="hello(11) " id="button11"
-                            class="bg-[#F0FDF4] hover:-translate-y-1 transform transition-all duration-100 l-btn text-black rounded-sm  w-50 h-10 text-left px-3">All
-                            Trees</button>
-                        <div id="showing"></div>
-                    </section>
+        <h1 class="inter-intero font-semibold md:text-3xl text-lg pt-20 text-center">Choose Your Trees</h1>
+        <section class="flex justify-around gap-1 md:gap-6 pt-6 ">
+
+            <section class=" ">
+                <h3 class="font-semibold md:pb-2 text-[8px] md:text-base"> Categories</h3>
+                <section>
+                    <button onclick="hello(11); hom();" id="button11"
+                        class="bg-[#F0FDF4] hover:-translate-y-1 transform transition-all hover:bg-green-200 duration-100 l-btn text-black rounded-[1.5px] md:rounded-sm w-[100%] md:w-50 md:h-10 text-left text-[7px] md:text-base px-2 py-1 md:px-3">All
+                        Trees</button>
+                    <div id="showing" class="flex flex-col gap-none"></div>
+                </section>
+
+            </section>
+            <section id="cholly" class="md:w-240 grid grid-cols-3 gap-[6px] md:gap-6 ">
+                <!-- <div class="bg-white rounded-xl p-3 flex-col flex md:gap-3">
+                    <div></div>
+                    <h3 class="inter-intero font-semibold text-wrap">Mango Tree</h3>
+                    <h5 class="text-[#1F2937] text-xs">A fast-growing tropical tree that produces delicious, juicy
+                        mangoes during summer. Its dense
+                        green</h5>
+                    <div class="flex justify-between"><button
+                            class="bg-[#DCFCE7] md:px-3 text-center rounded-3xl text-[#15803D]">Fruit Tree</button>
+                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>500</p>
+                    </div>
+                    <div><button
+                            class="bg-[#15803D] text-white md:w-full md:py-2 rounded-3xl hover:-translate-y-1 transform transition-all duration-200">Add
+                            to Cart</button></div>
+                </div> -->
+
+
+
+            </section>
+
+            <!-- cart section -->
+            <section class=" rounded-lg  bg-white md:w-55 p-3">
+                <p class="inter-intero text-xl pb-2 font-semibold">Your Cart</p>
+                <div id="molly" class="flex flex-col gap-2"></div>
+
+                <div class="flex justify-between mt-2 shadow-[0_-2px_0_rgba(0,0,0,0.1)]">
+                    <div>Total:</div>
+                    <span class="flex justify-center items-center "><i
+                            class="fa-solid  fa-bangladeshi-taka-sign fa-xs"></i>
+                        <div id="totalmoney">money</div>
+                    </span>
                 </div>
-            </section>
-            <section class="border md:w-230">
-<div class="bg-white p-5">
-    <div></div>
-    <h3>Mango Tree</h3>
-    <h5>A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green</h5>
-<div><button>Fruit Tree</button>
-<p>500</p></div>
-
-</div>
-
-
-
-            </section>
-            <section class="border rounded-lg  bg-white md:w-55">
-
+                <!-- <div class="flex rounded-sm justify-between p-[6px] items-center bg-[#F0FDF4]">
+                    <div class="flex flex-col">
+                        <div class="font-semibold">Mange Tree</div>
+                        <div class="text-[#8C8C8C]"><i class="fa-solid text-[#8C8C8C] fa-bangladeshi-taka-sign"></i>500 x 1</div>
+                           </div>
+                    <div class="text-[#8C8C8C]">x</div>
+                </div> -->
             </section>
         </section>
 
@@ -107,7 +131,101 @@
 
     </section>
 
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box w-80 p-[13px]  md:p-[13px]">
+            <div id="moo"></div>
+            <form class="pt-2 md:pb-1" method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn h-7 md:h-8 ">Close</button>
+            </form>
+        </div>
+        </div>
+    </dialog>
+
+
     <script>
+        let sum = 0;
+        const mello = (id) => {
+
+            fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+                .then(res => res.json()
+                    .then(data => {
+                        inom(data.plants)
+                    }))
+        }
+        let flag = {};
+        let count = {};
+        const inom = (data) => {
+
+            sum += data.price;
+            if (!flag[data.id]) {
+                count[data.id] = 1;
+                flag[data.id] = true;
+                const boo = document.createElement('div')
+                boo.innerHTML = ` <div class="flex rounded-md justify-between p-[8px] px-3 items-center bg-[#F0FDF4]">
+                    <div class="flex flex-col">
+                        <div class="font-semibold ">${data.name}</div>
+                        <div class="text-[#8C8C8C]"><i class="fa-solid text-[#8C8C8C] fa-bangladeshi-taka-sign fa-xs"></i>${data.price} <i class="fa-sharp fa-solid fa-xmark fa-2xs"></i>
+                            <span id="nope${data.id}">${count[data.id]}</span>
+                            </div>
+                           </div>
+                    <div class="text-[#8C8C8C]"><i class="fa-sharp fa-solid fa-xmark fa-fade fa-2xs"></i></div>
+                </div>`
+                document.getElementById('molly').appendChild(boo)
+            }
+            document.getElementById('totalmoney').innerText = sum;
+            document.getElementById(`nope${data.id}`).innerText = count[data.id];//abr value set korchi
+            count[data.id]++;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        const bello = (id) => {
+            fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+                .then(res => res.json()
+                    .then(data => {
+                        ino(data.plants)
+                    }))
+        }
+        const ino = (data) => {
+            document.getElementById('moo').innerText = ''
+
+            const boo = document.createElement('div')
+            boo.innerHTML = `<div class="bg-white rounded-md md:rounded-xl md:h-[87%] p-[8px] md:p-1 flex-col flex  md:gap-[7px]">
+                    <h3 class="inter-intero text-[13px] pb-1 md:pb-0 md:text-lg font-bold ">${data.name}</h3>
+                  
+                <div class="h-16 pb-1 md:pb-0 h-45 md:h-45 w-full rounded-xl"><img class="rounded-md md:rounded-xl h-full w-full" src="${data.image}" alt=""></div>
+                   <div
+                    class=" text-[12px] md:text-xs font-normal  text-left text-black"><span class="font-bold text-sm">Category: </span> ${data.category}
+                    </div>
+                       <p class="font-normal text-[12px] md:text-xs"><span class="font-bold text-sm">Price: </span><i class="fa-solid  fa-bangladeshi-taka-sign"></i>${data.price}</p>
+                   
+                <h5 class="text-[#1F2937] h-full text-[12px] md:text-xs " ><span class="font-bold text-sm">Description: </span>${data.description}</h5>
+                       </div>
+                    
+                </div>`
+            document.getElementById('moo').appendChild(boo)
+
+        }
+
+
+
+
+
+
         const hello = (id) => {
             fetch('https://openapi.programming-hero.com/api/categories')
                 .then(res => res.json()
@@ -125,18 +243,74 @@
                     ))
         }
 
+
+        const showinfo = (id) => {
+            fetch(`https://openapi.programming-hero.com/api/category/${id}`)
+                .then(res => res.json())
+                .then(res => showinginfo(res.plants))
+        }
+        const showinginfo = (data) => {
+            document.getElementById('cholly').innerText = ''
+            for (var a of data) {
+                const boo = document.createElement('div')
+                boo.innerHTML = `<div class="bg-white rounded-md md:rounded-xl h-[69%] md:h-[87%] p-2 md:p-4 flex-col flex  md:gap-3">
+                    <div class="h-16 pb-1 md:pb-0 md:h-45 w-full rounded-xl"><img class="rounded-md md:rounded-xl h-full w-full" src="${a.image}" alt=""></div>
+                    <h3 onclick="my_modal_1.showModal(); bello(${a.id})" class="inter-intero text-[8px] md:text-lg font-semibold hover:-translate-y-1 transform transition-all duration-300">${a.name}</h3>
+                    <h5 class="text-[#1F2937] h-full text-[6px] md:text-xs " >${a.description}</h5>
+                    <div class="flex justify-between"><button class="bg-[#DCFCE7] text-[7px] md:text-xs px-1 font-semibold md:px-3 text-center rounded-3xl text-[#15803D] hover:-translate-y-1 transform transition-all duration-200">${a.category}</button>
+                        <p class="font-semibold text-[5px] md:text-sm"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${a.price}</p>
+                    </div>
+                    <div><button onclick="" class="bg-[#15803D] text-white w-full py-[2px] md:py-2 rounded-3xl text-[8px]  md:text-base hover:-translate-y-1 transform transition-all duration-200">Add to Cart</button></div>
+                </div>`
+                document.getElementById('cholly').appendChild(boo)
+            }
+        }
+
+
+
+
+
+
         const datashow = (data) => {
             document.getElementById('showing').innerText = ''
             for (let a of data) {
                 const undo = document.createElement('div'
                 )
-                undo.innerHTML = `<button id="button${a.id}" onclick="hello(${a.id})" class="hover:-translate-y-1 transform transition-all duration-100 bg-[#F0FDF4] l-btn text-black rounded-sm w-50 h-10 text-left px-3">${a.category_name}</button>
-<div id="showing"></div>`
+                undo.innerHTML = `<button id="button${a.id}" onclick="hello(${a.id}); showinfo(${a.id});" class="hover:-translate-y-1 transform transition-all hover:bg-green-200 duration-100 bg-[#F0FDF4] l-btn text-black rounded-[1px] md:rounded-sm w-full md:w-50 md:h-10 text-left text-[7px] md:text-base px-2 whitespace-nowrap py-1 md:px-3">${a.category_name}</button>`
                 document.getElementById('showing').appendChild(undo)
             }
 
         }
 
+        hello(11)
+    </script>
+    <script>
+        const hom = () => {
+            fetch('https://openapi.programming-hero.com/api/plants')
+                .then(res => res.json())
+                .then(data => ally(data.plants))
+        }
+        const ally = (data) => {
+            document.getElementById('cholly').innerText = ''
+            for (let a of data) {
+
+                const olly = document.createElement('div')
+                olly.innerHTML = `<div class="bg-white rounded-md md:rounded-xl h-full p-2 md:p-4 flex-col flex gap-1 md:gap-3">
+                    <div class="h-16 md:h-45 w-full rounded-sm md:rounded-xl"><img class="rounded-md md:rounded-xl h-full w-full" src="${a.image}" alt=""></div>
+                    <h3 onclick="my_modal_1.showModal();bello(${a.id})" class="inter-intero text-[8px] md:text-lg font-semibold hover:-translate-y-1 transform transition-all duration-200">${a.name}</h3>
+                    <h5 class="text-[#1F2937] h-full text-[6px] md:text-xs" >${a.description}</h5>
+                    <div class="flex justify-between"><button class="bg-[#DCFCE7] text-[7px] md:text-xs font-semibold px-2 md:px-3 text-center rounded-3xl text-[#15803D] hover:-translate-y-1 transform transition-all duration-200">${a.category}</button>
+                        <p class="font-semibold text-[5px] md:text-sm"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${a.price}</p>
+                    </div>
+                    <div><button onclick="mello(${a.id})" class="bg-[#15803D] text-white w-full py-[2px] md:py-2 rounded-3xl text-[8px]  md:text-base hover:-translate-y-1 transform transition-all duration-200">Add to Cart</button></div>
+                </div>`
+                document.getElementById('cholly').appendChild(olly)
+
+            }
+
+
+        }
+        hom();
     </script>
 </body>
 
