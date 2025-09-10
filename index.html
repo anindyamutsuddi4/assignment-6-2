@@ -70,9 +70,9 @@
     </section>
 
 
-    <section class="md:px-17 px-4">
+    <section class="md:px-17 px-2">
 
-        <h1 class="inter-intero font-semibold md:text-3xl text-lg pt-20 text-center">Choose Your Trees</h1>
+        <h1 class="inter-intero font-semibold md:text-3xl text-lg pt-10 md:pt-20 text-center">Choose Your Trees</h1>
         <section class="flex justify-around gap-1 md:gap-6 pt-6 ">
 
             <section class=" ">
@@ -106,15 +106,15 @@
             </section>
 
             <!-- cart section -->
-            <section class=" rounded-lg  bg-white md:w-55 p-3">
-                <p class="inter-intero text-xl pb-2 font-semibold">Your Cart</p>
+            <section class=" rounded-lg bg-white w-80 md:w-55 p-[6px] px-[1px] md:p-3">
+                <p class="inter-intero text-[8px] md:text-xl pl-1 pb-2 font-semibold">Your Cart</p>
                 <div id="molly" class="flex flex-col gap-2"></div>
 
-                <div class="flex justify-between mt-2 shadow-[0_-2px_0_rgba(0,0,0,0.1)]">
-                    <div>Total:</div>
+                <div class="flex justify-between items-center mt-2 shadow-[0_-2px_0_rgba(0,0,0,0.1)]">
+                    <div class="text-[8px] md:text-base">Total:</div>
                     <span class="flex justify-center items-center "><i
-                            class="fa-solid  fa-bangladeshi-taka-sign fa-xs"></i>
-                        <div id="totalmoney">money</div>
+                            class="fa-solid  fa-bangladeshi-taka-sign md:fa-xs text-[6px] md:text-xs"></i>
+                        <div id="totalmoney" class="text-[7px] md:text-base">0</div>
                     </span>
                 </div>
                 <!-- <div class="flex rounded-sm justify-between p-[6px] items-center bg-[#F0FDF4]">
@@ -147,9 +147,10 @@
 
 
     <script>
+
+        //cart e add kora
         let sum = 0;
         const mello = (id) => {
-
             fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
                 .then(res => res.json()
                     .then(data => {
@@ -159,27 +160,37 @@
         let flag = {};
         let count = {};
         const inom = (data) => {
-
+            const boo = document.createElement('div')
             sum += data.price;
             if (!flag[data.id]) {
                 count[data.id] = 1;
                 flag[data.id] = true;
-                const boo = document.createElement('div')
-                boo.innerHTML = ` <div class="flex rounded-md justify-between p-[8px] px-3 items-center bg-[#F0FDF4]">
+                boo.innerHTML = ` <div class="flex rounded-md justify-between p-[2px] md:p-[8px] md:px-3 items-center bg-[#F0FDF4]">
                     <div class="flex flex-col">
-                        <div class="font-semibold ">${data.name}</div>
-                        <div class="text-[#8C8C8C]"><i class="fa-solid text-[#8C8C8C] fa-bangladeshi-taka-sign fa-xs"></i>${data.price} <i class="fa-sharp fa-solid fa-xmark fa-2xs"></i>
-                            <span id="nope${data.id}">${count[data.id]}</span>
+                        <div class="font-semibold text-[7px] md:text-base">${data.name}</div>
+                        <div class="text-[#8C8C8C]"><i class="fa-solid text-[#8C8C8C] fa-bangladeshi-taka-sign md:fa-xs text-[6px] md:text-sm"></i><span class="text-[6px] md:text-base"> ${data.price} </span> <i class="fa-sharp fa-solid fa-xmark md:fa-2xs text-[6px] md:text-xs"></i>
+                            <span id="nope${data.id}" class="text-[7px] md:text-base">${count[data.id]}</span>
                             </div>
                            </div>
-                    <div class="text-[#8C8C8C]"><i class="fa-sharp fa-solid fa-xmark fa-fade fa-2xs"></i></div>
+                    <div  class="cross text-[#8C8C8C]"><i class="fa-sharp fa-solid fa-xmark fa-fade md:fa-2xs text-[6px] md:text-sm"></i></div>
                 </div>`
                 document.getElementById('molly').appendChild(boo)
+
+                //cross e click korle remove korar jonno
+                 boo.querySelector('.cross').addEventListener('click', () => {
+                boo.remove();
+                sum = sum - ((count[data.id] - 1) * data.price);
+                document.getElementById('totalmoney').innerText = sum
+                flag[data.id] = false;//jate cross korar pore abr cart e add kora jai       
+            })
             }
             document.getElementById('totalmoney').innerText = sum;
             document.getElementById(`nope${data.id}`).innerText = count[data.id];//abr value set korchi
             count[data.id]++;
-
+           
+            //             const cross=(moon)=>{
+            //     document.getElementById('molly').removeChild(moon)
+            // }
         }
 
 
@@ -260,7 +271,7 @@
                     <div class="flex justify-between"><button class="bg-[#DCFCE7] text-[7px] md:text-xs px-1 font-semibold md:px-3 text-center rounded-3xl text-[#15803D] hover:-translate-y-1 transform transition-all duration-200">${a.category}</button>
                         <p class="font-semibold text-[5px] md:text-sm"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${a.price}</p>
                     </div>
-                    <div><button onclick="" class="bg-[#15803D] text-white w-full py-[2px] md:py-2 rounded-3xl text-[8px]  md:text-base hover:-translate-y-1 transform transition-all duration-200">Add to Cart</button></div>
+                    <div><button onclick="mello(${a.id})" class="bg-[#15803D] text-white w-full py-[2px] md:py-2 rounded-3xl text-[8px]  md:text-base hover:-translate-y-1 transform transition-all duration-200">Add to Cart</button></div>
                 </div>`
                 document.getElementById('cholly').appendChild(boo)
             }
@@ -295,15 +306,19 @@
             for (let a of data) {
 
                 const olly = document.createElement('div')
-                olly.innerHTML = `<div class="bg-white rounded-md md:rounded-xl h-full p-2 md:p-4 flex-col flex gap-1 md:gap-3">
+                olly.innerHTML = `<div class="bg-white rounded-md md:rounded-xl h-full p-1 md:p-4 flex-col flex gap-1 md:gap-3">
                     <div class="h-16 md:h-45 w-full rounded-sm md:rounded-xl"><img class="rounded-md md:rounded-xl h-full w-full" src="${a.image}" alt=""></div>
-                    <h3 onclick="my_modal_1.showModal();bello(${a.id})" class="inter-intero text-[8px] md:text-lg font-semibold hover:-translate-y-1 transform transition-all duration-200">${a.name}</h3>
-                    <h5 class="text-[#1F2937] h-full text-[6px] md:text-xs" >${a.description}</h5>
+                    
+                      <h3 onclick="my_modal_1.showModal();bello(${a.id})" class="inter-intero text-[8px] md:text-lg font-semibold hover:-translate-y-1 transform transition-all duration-200">${a.name}</h3>
+                    <h5 class="text-[#1F2937] h-full text-[4px] md:text-xs" >${a.description}</h5>
                     <div class="flex justify-between"><button class="bg-[#DCFCE7] text-[7px] md:text-xs font-semibold px-2 md:px-3 text-center rounded-3xl text-[#15803D] hover:-translate-y-1 transform transition-all duration-200">${a.category}</button>
                         <p class="font-semibold text-[5px] md:text-sm"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${a.price}</p>
                     </div>
                     <div><button onclick="mello(${a.id})" class="bg-[#15803D] text-white w-full py-[2px] md:py-2 rounded-3xl text-[8px]  md:text-base hover:-translate-y-1 transform transition-all duration-200">Add to Cart</button></div>
-                </div>`
+           
+                        
+                        
+                           </div>`
                 document.getElementById('cholly').appendChild(olly)
 
             }
