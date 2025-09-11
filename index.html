@@ -35,7 +35,7 @@
     </style>
 </head>
 
-<body class="bg-[#F0FDF4] h-[3000px]">
+<body class="bg-[#F0FDF4] h-[100%]">
     <nav class="bg-[#15803D] h-14 flex justify-between items-center mx-auto md:h-20 px-2 md:px-25">
         <h3 class="font-medium text-md md:text-2xl text-white">Green Earth</h3>
         <div class="flex gap-1 md:gap-8 ">
@@ -43,7 +43,7 @@
             <section class="inter-intero text-xs md:text-sm md:font-medium text-white">Gallery</section>
             <section class="inter-intero text-xs md:text-sm md:font-medium text-white"> Plant a Tree </section>
         </div>
-        <section sm:><button
+        <section><button
                 class="transform hover:-translate-y-1 transition-all duration-300 w-auto min-w-0 btn btn-active bg-[#FACC15] sm:text-sm rounded-3xl text-[#15803D] px-4 py-1">Plant
                 a Tree</button></section>
 
@@ -146,7 +146,107 @@
     </dialog>
 
 
+    <section class="md:px-75 px-20 pt-12 md:pt-24 pb-20">
+
+        <div class="inter-intero font-semibold text-base md:text-3xl pb-4 text-center">About the Campaign</div>
+        <div class="flex gap-2 md:gap-6 justify-center items-center nx-auto">
+            <div class="h-full   md:w-[940px] flex-1"> <img class="h-full w-full rounded-md"
+                    src="assets/about.png" alt=""></div>
+            <div class="flex-1">
+                <p class="font-normal inter-intero text-wrap text-[4px] md:text-[12px] text-[#1E1E1E]">Green Earth is a
+                    global tree plantation
+                    initiative dedicated to fighting climate change. Since our start, we’ve planted over 500,000 trees
+                    worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and
+                    combat global warming.</p>
+                <p class="font-normal pl-1 text-[4px] md:text-[12px] inter-intero pt-4">
+                    <i class="fa-solid fa-circle text-[2px] md:text-[5px]"></i> Restoration of natural habitats <br>
+                    <i class="fa-solid fa-circle text-[2px] md:text-[5px]"></i> Improvement of air quality <br>
+                    <i class="fa-solid fa-circle text-[2px] md:text-[5px]"></i> Support for local communities
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- impact -->
+    <section class="flex flex-col justify-center mx-auto pb-12 md:pb-20  bg-[#CFF0DC]">
+        <p class="flex justify-center inter-intero pt-8 md:pt-15 font-bold text-base md:text-2xl">Our Impact</p>
+        <div class="grid grid-cols-3 pt-3 md:pt-6 px-16 md:px-40 gap-2 md:gap-10">
+            <div class="bg-white flex flex-col p-[9px] md:p-7 justify-center items-center rounded-md md:rounded-lg">
+                <p class="text-[#15803D] inter-intero text-base md:text-2xl font-bold ">500k+</p>
+                <p class="md:text-sm text-[7px] inter-intero text-[#1F2937]">Trees Planted</p>
+            </div>
+            <div class="bg-white flex flex-col p-[9px] md:p-7 justify-center items-center rounded-md md:rounded-lg">
+                <p class="text-[#15803D] inter-intero text-base md:text-2xl font-bold ">120+</p>
+                <p class="md:text-sm text-[7px] inter-intero text-[#1F2937]">Communities Involved</p>
+            </div>
+            <div class="bg-white flex p-[9px] md:p-7 flex-col justify-center items-center rounded-md md:rounded-lg">
+                <p class="text-[#15803D] inter-intero text-base md:text-2xl font-bold ">30+</p>
+                <p class="md:text-sm text-[7px] inter-intero text-[#1F2937]">Countries Reached</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- input -->
+    <section class="bg-[#166534] flex flex-col justify-center items-center">
+        <div class="inter-intero pt-6 pb-2 md:pt-17 md:pb-5 font-semibold text-white text-sm md:text-2xl">Plant a Tree Today</div>
+        <div class="p-4 md:p-8 bg-[#15803D] mb-8 md:mb-13 flex flex-col  gap-[3px] md:gap-[10px] rounded-md">
+            <input id="input1" class="bg-white text-xs md:text-base w-60 h-7 md:w-92  md:h-10 rounded-md p-3 border-none" type="text"
+                placeholder="Your Name">
+            <input id="input2" class="bg-white text-xs md:text-base w-60 h-7 md:w-92  md:h-10 rounded-md p-3 border-none" type="text"
+                placeholder="Your Email Address">
+            <div class="dropdown">
+                <label tabindex="0" id="input"
+                    class="btn  bg-white w-60 h-7 md:w-92 text-xs md:text-base md:h-10 rounded-md p-3 border-none flex justify-between">
+                    <div id="num">Number of Trees</div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 inline-block" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </label>
+                <ul tabindex="0" class="dropdown-content menu  shadow bg-base-100 rounded-box w-52">
+                    <li id="one" onclick="func('one')"><a>1 tree - $5</a></li>
+                    <li id="two" onclick="func('two')"><a>5 trees - $25</a></li>
+                    <li id="three" onclick="func('three')"><a>10 trees - $50</a></li>
+                </ul>
+            </div>
+            <button id="donate"
+                class=" w-auto min-w-0 h-7 md:h-10 bg-[#FACC15] text-[13px] md:text-sm rounded-3xl font-semibold text-2xl text-[#15803D]">Donate
+                Now</button>
+
+        </div>
+<div class="bg-[#14532D] h-7 md:h-13 w-full flex justify-center mx-auto items-center text-white inter-intero text-[6px] md:text-[10px]" > © 2025 Green Earth. All Rights Reserved. </div>
+    </section>
+
+
+
     <script>
+        const func = (id) => {
+            // document.getElementById('one').addEventListener('click',function(){
+            const value = document.getElementById(id).innerText;
+            document.getElementById('num').innerText = value
+
+
+        }
+        document.getElementById('donate').addEventListener('click', function () {
+            document.getElementById('input1').value = ''
+            document.getElementById('input2').value = ''
+            document.getElementById('num').innerText = 'Number of Trees'
+            document.getElementById('donate').style.transform = "scale(0.95)";
+            setTimeout(() => {
+                document.getElementById('donate').style.transform = "scale(1)";
+            }, 100);
+
+        })
+
+        // document.getElementById('donate').addEventListener("mouseleave", () => {
+        //    document.getElementById('donate').style.transform = "scale(1)"; // back to normal
+        // });
+
+
 
         //cart e add kora
         let sum = 0;
@@ -177,17 +277,17 @@
                 document.getElementById('molly').appendChild(boo)
 
                 //cross e click korle remove korar jonno
-                 boo.querySelector('.cross').addEventListener('click', () => {
-                boo.remove();
-                sum = sum - ((count[data.id] - 1) * data.price);
-                document.getElementById('totalmoney').innerText = sum
-                flag[data.id] = false;//jate cross korar pore abr cart e add kora jai       
-            })
+                boo.querySelector('.cross').addEventListener('click', () => {
+                    boo.remove();
+                    sum = sum - ((count[data.id] - 1) * data.price);
+                    document.getElementById('totalmoney').innerText = sum
+                    flag[data.id] = false;//jate cross korar pore abr cart e add kora jai       
+                })
             }
             document.getElementById('totalmoney').innerText = sum;
             document.getElementById(`nope${data.id}`).innerText = count[data.id];//abr value set korchi
             count[data.id]++;
-           
+
             //             const cross=(moon)=>{
             //     document.getElementById('molly').removeChild(moon)
             // }
@@ -264,20 +364,26 @@
             document.getElementById('cholly').innerText = ''
             for (var a of data) {
                 const boo = document.createElement('div')
-                boo.innerHTML = `<div class="bg-white rounded-md md:rounded-xl h-[69%] md:h-[87%] p-2 md:p-4 flex-col flex  md:gap-3">
+                boo.innerHTML = `<div class="bg-white rounded-md md:rounded-xl h-[69%] md:h-[87%] p-2 md:p-4 flex-col flex  md:gap-2">
                     <div class="h-16 pb-1 md:pb-0 md:h-45 w-full rounded-xl"><img class="rounded-md md:rounded-xl h-full w-full" src="${a.image}" alt=""></div>
                     <h3 onclick="my_modal_1.showModal(); bello(${a.id})" class="inter-intero text-[8px] md:text-lg font-semibold hover:-translate-y-1 transform transition-all duration-300">${a.name}</h3>
                     <h5 class="text-[#1F2937] h-full text-[6px] md:text-xs " >${a.description}</h5>
-                    <div class="flex justify-between"><button class="bg-[#DCFCE7] text-[7px] md:text-xs px-1 font-semibold md:px-3 text-center rounded-3xl text-[#15803D] hover:-translate-y-1 transform transition-all duration-200">${a.category}</button>
+                    <div class="flex  justify-between"><button class="bg-[#DCFCE7] text-[7px] md:text-xs px-1 font-semibold md:px-3 text-center rounded-3xl text-[#15803D] hover:-translate-y-1 transform transition-all duration-200">${a.category}</button>
                         <p class="font-semibold text-[5px] md:text-sm"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${a.price}</p>
                     </div>
-                    <div><button onclick="mello(${a.id})" class="bg-[#15803D] text-white w-full py-[2px] md:py-2 rounded-3xl text-[8px]  md:text-base hover:-translate-y-1 transform transition-all duration-200">Add to Cart</button></div>
+                    <div><button id="cartoon${a.id}"  onclick="mello(${a.id});funcop(id)" class="bg-[#15803D] text-white w-full py-[2px] md:py-2 rounded-3xl text-[8px]  md:text-base hover:-translate-y-1 transform transition-all duration-200">Add to Cart</button></div>
                 </div>`
                 document.getElementById('cholly').appendChild(boo)
             }
         }
 
-
+  //hover
+        const funcop = (id) => {
+            document.getElementById(`${id}`).style.transform = "scale(0.95)";
+            setTimeout(() => {
+                document.getElementById(`${id}`).style.transform = "scale(1)";
+            }, 100);
+        }
 
 
 
@@ -306,7 +412,7 @@
             for (let a of data) {
 
                 const olly = document.createElement('div')
-                olly.innerHTML = `<div class="bg-white rounded-md md:rounded-xl h-full p-1 md:p-4 flex-col flex gap-1 md:gap-3">
+                olly.innerHTML = `<div class="bg-white rounded-md md:rounded-xl h-full p-1 md:p-4 flex-col flex gap-1 md:gap-2">
                     <div class="h-16 md:h-45 w-full rounded-sm md:rounded-xl"><img class="rounded-md md:rounded-xl h-full w-full" src="${a.image}" alt=""></div>
                     
                       <h3 onclick="my_modal_1.showModal();bello(${a.id})" class="inter-intero text-[8px] md:text-lg font-semibold hover:-translate-y-1 transform transition-all duration-200">${a.name}</h3>
@@ -314,17 +420,22 @@
                     <div class="flex justify-between"><button class="bg-[#DCFCE7] text-[7px] md:text-xs font-semibold px-2 md:px-3 text-center rounded-3xl text-[#15803D] hover:-translate-y-1 transform transition-all duration-200">${a.category}</button>
                         <p class="font-semibold text-[5px] md:text-sm"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${a.price}</p>
                     </div>
-                    <div><button onclick="mello(${a.id})" class="bg-[#15803D] text-white w-full py-[2px] md:py-2 rounded-3xl text-[8px]  md:text-base hover:-translate-y-1 transform transition-all duration-200">Add to Cart</button></div>
-           
-                        
-                        
+                    <div><button id="cartoon${a.id}"  onclick="mello(${a.id});funco(id)" class="bg-[#15803D] text-white w-full py-[2px] md:py-2 rounded-3xl text-[8px]  md:text-base hover:-translate-y-1 transform transition-all duration-200">Add to Cart</button></div>                  
                            </div>`
                 document.getElementById('cholly').appendChild(olly)
-
             }
-
-
         }
+
+        //hover
+        const funco = (id) => {
+            document.getElementById(`${id}`).style.transform = "scale(0.95)";
+            setTimeout(() => {
+                document.getElementById(`${id}`).style.transform = "scale(1)";
+            }, 100);
+        }
+
+
+
         hom();
     </script>
 </body>
