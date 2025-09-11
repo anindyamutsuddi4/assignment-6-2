@@ -70,7 +70,27 @@
     </section>
 
 
-    <section class="md:px-17 px-2">
+
+    <!-- spinner -->
+    <section id="spin" class="flex justify-center items-center py-20 hidden"><span
+            class="loading loading-bars loading-md"></span></section>
+    <script>
+        const spinner = (status) => {
+            if (status) {
+                document.getElementById('spin').classList.remove('hidden')
+                document.getElementById('choose').classList.add("hidden")
+            }
+            else {
+                document.getElementById('spin').classList.add('hidden')
+                document.getElementById('choose').classList.remove("hidden")
+            }
+        }
+    </script>
+
+
+
+
+    <section id="choose" class="md:px-17 px-2">
 
         <h1 class="inter-intero font-semibold md:text-3xl text-lg pt-10 md:pt-20 text-center">Choose Your Trees</h1>
         <section class="flex justify-around gap-1 md:gap-6 pt-6 ">
@@ -150,8 +170,8 @@
 
         <div class="inter-intero font-semibold text-base md:text-3xl pb-4 text-center">About the Campaign</div>
         <div class="flex gap-2 md:gap-6 justify-center items-center nx-auto">
-            <div class="h-full   md:w-[940px] flex-1"> <img class="h-full w-full rounded-md"
-                    src="assets/about.png" alt=""></div>
+            <div class="h-full   md:w-[940px] flex-1"> <img class="h-full w-full rounded-md" src="assets/about.png"
+                    alt=""></div>
             <div class="flex-1">
                 <p class="font-normal inter-intero text-wrap text-[4px] md:text-[12px] text-[#1E1E1E]">Green Earth is a
                     global tree plantation
@@ -192,11 +212,14 @@
 
     <!-- input -->
     <section class="bg-[#166534] flex flex-col justify-center items-center">
-        <div class="inter-intero pt-6 pb-2 md:pt-17 md:pb-5 font-semibold text-white text-sm md:text-2xl">Plant a Tree Today</div>
+        <div class="inter-intero pt-6 pb-2 md:pt-17 md:pb-5 font-semibold text-white text-sm md:text-2xl">Plant a Tree
+            Today</div>
         <div class="p-4 md:p-8 bg-[#15803D] mb-8 md:mb-13 flex flex-col  gap-[3px] md:gap-[10px] rounded-md">
-            <input id="input1" class="bg-white text-xs md:text-base w-60 h-7 md:w-92  md:h-10 rounded-md p-3 border-none" type="text"
+            <input id="input1"
+                class="bg-white text-xs md:text-base w-60 h-7 md:w-92  md:h-10 rounded-md p-3 border-none" type="text"
                 placeholder="Your Name">
-            <input id="input2" class="bg-white text-xs md:text-base w-60 h-7 md:w-92  md:h-10 rounded-md p-3 border-none" type="text"
+            <input id="input2"
+                class="bg-white text-xs md:text-base w-60 h-7 md:w-92  md:h-10 rounded-md p-3 border-none" type="text"
                 placeholder="Your Email Address">
             <div class="dropdown">
                 <label tabindex="0" id="input"
@@ -218,7 +241,9 @@
                 Now</button>
 
         </div>
-<div class="bg-[#14532D] h-7 md:h-13 w-full flex justify-center mx-auto items-center text-white inter-intero text-[6px] md:text-[10px]" > © 2025 Green Earth. All Rights Reserved. </div>
+        <div
+            class="bg-[#14532D] h-7 md:h-13 w-full flex justify-center mx-auto items-center text-white inter-intero text-[6px] md:text-[10px]">
+            © 2025 Green Earth. All Rights Reserved. </div>
     </section>
 
 
@@ -356,6 +381,7 @@
 
 
         const showinfo = (id) => {
+            spinner(true)
             fetch(`https://openapi.programming-hero.com/api/category/${id}`)
                 .then(res => res.json())
                 .then(res => showinginfo(res.plants))
@@ -375,9 +401,10 @@
                 </div>`
                 document.getElementById('cholly').appendChild(boo)
             }
+            spinner(false)
         }
 
-  //hover
+        //hover
         const funcop = (id) => {
             document.getElementById(`${id}`).style.transform = "scale(0.95)";
             setTimeout(() => {
@@ -403,6 +430,7 @@
     </script>
     <script>
         const hom = () => {
+            spinner(true)
             fetch('https://openapi.programming-hero.com/api/plants')
                 .then(res => res.json())
                 .then(data => ally(data.plants))
@@ -424,6 +452,7 @@
                            </div>`
                 document.getElementById('cholly').appendChild(olly)
             }
+            spinner(false)
         }
 
         //hover
