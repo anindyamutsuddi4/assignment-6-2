@@ -19,6 +19,10 @@
 - **Interactive UI:** Hover and click effects for buttons and categories.  
 
 
+### 🔹 Screenshot
+![Green Earth Screenshot](Screenshot%202025-12-31%20183926.png)
+
+
 ---
 🌴 API Endpoints
 ---
